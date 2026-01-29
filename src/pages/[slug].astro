@@ -1,0 +1,167 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const examples = await getCollection('examples');
+  return examples.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const examples = await getCollection('examples');
+const sortedExamples = examples.sort((a, b) => a.data.order - b.data.order);
+const currentIndex = sortedExamples.findIndex(e => e.slug === entry.slug);
+
+const next = currentIndex < sortedExamples.length - 1 ? sortedExamples[currentIndex + 1] : null;
+---
+
+<Layout title={entry.data.title} description={entry.data.description}>
+  <div class="example" id={entry.slug}>
+    <h2>
+      <span class="header-small"><a href="/gobyexample-ar/">Go بالأمثلة</a></span>: {entry.data.title}
+    </h2>
+
+    <div class="example-grid">
+      <Content />
+    </div>
+
+    {next && (
+      <p class="next">
+        المثال التالي: <a href={`/gobyexample-ar/${next.slug}`}>{next.data.title}</a>.
+      </p>
+    )}
+
+    <p class="footer">
+      بواسطة <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">المصدر</a> | <a href="https://github.com/mmcgrana/gobyexample#license">الرخة</a>
+    </p>
+  </div>
+</Layout>
+
+<style is:global>
+  .example {
+    width: 960px; /* High-fidelity fixed width */
+    margin: 40px auto 120px;
+  }
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+
+  .header-small {
+    font-size: 18px;
+    font-weight: normal;
+    color: #888;
+  }
+
+  h2 a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* 
+     The Grid: Mirroring the original site's table layout in RTL.
+     Column 1: Right (Docs), Column 2: Left (Code)
+  */
+  .example-grid {
+    display: grid;
+    grid-template-columns: 450px 510px; /* Docs(Right) Code(Left) */
+    margin-top: 15px;
+    margin-bottom: 20px;
+    gap: 0; /* Continuous column look */
+  }
+
+  /* Documentation paragraphs */
+  .example-grid > p {
+    grid-column: 1; /* First column in RTL is Right */
+    padding: 5px 0 15px 20px; /* Padding-left for separation from code */
+    text-align: right;
+    margin: 0;
+    background-color: #1f1f1f;
+  }
+
+  /* Code blocks */
+  .example-grid > pre {
+    grid-column: 2; /* Second column in RTL is Left */
+    background-color: #282828 !important;
+    padding: 10px 15px;
+    margin: 0;
+    direction: ltr;
+    text-align: left;
+    overflow-x: auto;
+    border-radius: 0;
+    height: 100%; /* Stretch to fill cell for continuous background */
+    border: none;
+    display: flex;
+    align-items: center; /* Better vertical alignment if one side is longer */
+  }
+
+  .example-grid > pre code {
+    width: 100%;
+    display: block;
+  }
+
+  /* Shell / Run section logic */
+  /* Make SH blocks look distinct and add spacing */
+  .example-grid > pre[class*="language-sh"],
+  .example-grid > pre[class*="language-shell"] {
+    grid-column: 1 / span 2;
+    background-color: #1a1a1a !important; /* Slightly distinct as requested */
+    padding: 20px;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    height: auto;
+  }
+
+  /* Force the paragraph immediately before a shell block to break out */
+  .example-grid > p:has(+ pre[class*="language-sh"]),
+  .example-grid > p:has(+ pre[class*="language-shell"]) {
+    grid-column: 1 / span 2;
+    margin-top: 40px;
+    padding: 10px 0;
+    font-weight: bold;
+  }
+
+  .next {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left; /* Forward direction in RTL */
+  }
+
+  .footer {
+    margin-top: 40px;
+    font-size: 12px; /* Original uses 75% of 16px */
+    color: #898e98;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+  }
+
+  .footer a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  /* Handle mobile responsiveness lightly */
+  @media (max-width: 960px) {
+    .example {
+        width: 100%;
+        padding: 20px;
+    }
+    .example-grid {
+        grid-template-columns: 1fr;
+    }
+    .example-grid > p, .example-grid > pre {
+        grid-column: 1;
+        padding: 15px;
+    }
+    .example-grid > pre {
+        height: auto;
+    }
+  }
+</style>

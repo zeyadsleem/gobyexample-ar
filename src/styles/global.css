@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Vazirmatn", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Menlo", "Consolas", "Roboto Mono", "Ubuntu Monospace", "Noto Mono", "Oxygen Mono", "Liberation Mono", monospace;
+}
+
+html,
+body {
+  @apply h-full antialiased;
+  background-color: #ffffff;
+  color: #1f2937; /* gray-800 */
+}
+
+pre {
+    direction: ltr; /* Code blocks must be LTR */
+    text-align: left;
+}
+
+code {
+    direction: ltr;
+    unicode-bidi: embed;
+}

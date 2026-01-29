@@ -1,0 +1,83 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Go بالأمثلة هي مقدمة عملية للغة Go باستخدام برامج توضيحية مشروحة." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/gobyexample-ar/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Noto+Sans+Arabic:wght@400;700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--bg-color: #1f1f1f;
+		--text-color: #dadada;
+		--code-bg: #282828;
+		--link-color: #e4e4e4;
+		--footer-color: #898e98;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		background-color: var(--bg-color);
+		color: var(--text-color);
+		font-family: 'Noto Sans Arabic', sans-serif;
+		font-size: 18px; /* Increased for better Arabic legibility */
+		line-height: 1.8;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	a {
+		color: var(--link-color);
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	pre, code {
+		font-family: 'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+		font-size: 15px; /* Slightly bigger for clarity as requested */
+		line-height: 1.5;
+	}
+
+	/* Inline code styling - matching original site */
+	p code {
+		background-color: #333;
+		color: #eee;
+		padding: 2px 4px;
+		border-radius: 3px;
+		font-size: 0.9em;
+	}
+
+	h2 {
+		font-weight: bold;
+	}
+
+	em {
+		font-style: italic;
+	}
+</style>

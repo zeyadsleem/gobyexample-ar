@@ -1,17 +1,84 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
+const examples = await getCollection('examples');
+const sortedExamples = examples.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Go بالأمثلة">
+	<div id="intro">
+		<h2><a href="/gobyexample-ar/">Go بالأمثلة</a></h2>
+		
+		<p>
+			<a href="https://go.dev">Go</a> هي لغة برمجة مفتوحة المصدر مصممة لبناء برامج بسيطة وموثوقة وفعالة.
+		</p>
+
+		<p>
+			<em>Go بالأمثلة</em> هي مقدمة عملية للغة Go باستخدام برامج توضيحية مشروحة. ألقِ نظرة على <a href="/gobyexample-ar/hello-world">أول مثال</a> أو تصفح القائمة الكاملة أدناه.
+		</p>
+
+		<ul>
+			{sortedExamples.map((example) => (
+				<li>
+					<a href={`/gobyexample-ar/${example.slug}`}>
+						{example.data.title}
+					</a>
+				</li>
+			))}
+		</ul>
+
+		<p class="footer">
+			بواسطة <a href="https://markmcgranaghan.com">Mark McGranaghan</a> و <a href="https://eli.thegreenplace.net">Eli Bendersky</a> | <a href="https://github.com/mmcgrana/gobyexample">المصدر</a> | <a href="https://github.com/mmcgrana/gobyexample#license">الرخصة</a>
+		</p>
+	</div>
+</Layout>
+
+<style>
+	#intro {
+		width: 420px; /* Exact match to original intro width */
+		margin: 40px auto 120px;
+	}
+
+	h2 {
+		font-size: 36px;
+		margin-bottom: 24px;
+		font-family: 'Amiri', serif;
+	}
+
+	h2 a {
+		text-decoration: none;
+	}
+
+	p {
+		margin-top: 20px;
+		font-size: 18px;
+	}
+
+	ul {
+		margin-top: 24px;
+		list-style: none;
+	}
+
+	li {
+		margin-bottom: 8px;
+		font-size: 18px;
+	}
+
+	.footer {
+		margin-top: 40px;
+		font-size: 12px; /* Matching footer font size */
+		color: #898e98;
+	}
+
+	.footer a {
+		color: inherit;
+	}
+
+    @media (max-width: 480px) {
+        #intro {
+            width: 100%;
+            padding: 20px;
+        }
+    }
+</style>
