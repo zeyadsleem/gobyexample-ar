@@ -1,43 +1,45 @@
-# Astro Starter Kit: Minimal
+# Go بالأمثلة (Go by Example - Arabic)
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+هذا المشروع هو النسخة العربية من الموقع الشهير [Go by Example](https://gobyexample.com/)، وهو مقدمة عملية للغة البرمجة Go باستخدام برامج توضيحية مشروحة بشكل مبسط.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## المميزات
+- **ترجمة كاملة:** شرح مفصل لكل مفاهيم لغة Go باللغة العربية.
+- **تصميم مريح:** استخدام خطوط مدروسة بعناية (Noto Sans Arabic) لتوفير أفضل تجربة قراءة للمحتوى التقني.
+- **تنسيق احترافي:** عرض الكود البرمجي بجانب الشرح كما في الموقع الأصلي، مع دعم كامل للاتجاه من اليمين إلى اليسار (RTL).
+- **أحدث التقنيات:** مبني باستخدام إطار عمل Astro v5 لضمان السرعة والأداء العالي.
 
-## 🚀 Project Structure
+## الخطوط المستخدمة
+- **Noto Sans Arabic:** للقراءة والشروحات التقنية.
+- **Amiri:** للعناوين الرئيسية لإضفاء لمسة جمالية عربية.
+- **JetBrains Mono:** لعرض الأكواد البرمجية بوضوح.
 
-Inside of your Astro project, you'll see the following folders and files:
+## كيفية التشغيل محلياً
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+تأكد من تثبيت [Node.js](https://nodejs.org/) و [pnpm](https://pnpm.io/) على جهازك، ثم اتبع الخطوات التالية:
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. قم بتحميل المشروع:
+   ```bash
+   git clone https://github.com/zeyadsleem/gobyexample-ar.git
+   cd gobyexample-ar
+   ```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+2. تثبيت المكتبات:
+   ```bash
+   pnpm install
+   ```
 
-Any static assets, like images, can be placed in the `public/` directory.
+3. تشغيل خادم التطوير:
+   ```bash
+   pnpm dev
+   ```
+   سيفتح الموقع على الرابط: `http://localhost:4321/gobyexample-ar/`
 
-## 🧞 Commands
+## المساهمة
+المشروع مفتوح للمساهمة! إذا وجدت خطأً في الترجمة أو كان لديك اقتراح لتحسين الشرح، فلا تتردد في فتح (Issue) أو إرسال (Pull Request).
 
-All commands are run from the root of the project, from a terminal:
+## شكر وتقدير
+- الموقع الأصلي بواسطة: [Mark McGranaghan](https://markmcgranaghan.com) و [Eli Bendersky](https://eli.thegreenplace.net).
+- النسخة العربية بواسطة: [Zeyad Sleem](https://github.com/zeyadsleem).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## الرخصة
+هذا المشروع مرخص بموجب رخصة [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
