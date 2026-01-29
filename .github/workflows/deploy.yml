@@ -17,6 +17,16 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules pnpm-lock.yaml
+          pnpm install
+
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         with:
