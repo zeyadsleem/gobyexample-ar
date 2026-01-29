@@ -23,7 +23,7 @@ const next = currentIndex < sortedExamples.length - 1 ? sortedExamples[currentIn
 <Layout title={entry.data.title} description={entry.data.description}>
   <div class="example" id={entry.slug}>
     <h2>
-      <span class="header-small"><a href="/gobyexample-ar/">Go بالأمثلة</a></span>: {entry.data.title}
+      <span class="header-small"><a href="/gobyexample-ar/">Go بالأمثلة</a></span><span class="separator">:</span> {entry.data.title}
     </h2>
 
     <div class="example-grid">
@@ -52,17 +52,21 @@ const next = currentIndex < sortedExamples.length - 1 ? sortedExamples[currentIn
     font-size: 32px;
     margin-bottom: 20px;
     margin-top: 40px;
+    font-family: 'Amiri', serif;
   }
 
   .header-small {
     font-size: 18px;
     font-weight: normal;
     color: #888;
+    font-family: 'Noto Sans Arabic', sans-serif;
   }
 
-  h2 a {
-    text-decoration: none;
-    color: inherit;
+  .separator {
+    font-size: 20px;
+    color: #666;
+    margin: 0 4px;
+    vertical-align: middle;
   }
 
   /* 
