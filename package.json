@@ -9,6 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/amiri": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/noto-sans-arabic": "^5.2.10",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.15",
     "tailwindcss": "^4.1.18"
