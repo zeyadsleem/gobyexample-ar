@@ -44,7 +44,7 @@ const next = currentIndex < sortedExamples.length - 1 ? sortedExamples[currentIn
 
 <style is:global>
   .example {
-    width: 960px; /* High-fidelity fixed width */
+    width: 1100px; /* Increased width for better screen utilization */
     margin: 40px auto 120px;
   }
 
@@ -75,7 +75,7 @@ const next = currentIndex < sortedExamples.length - 1 ? sortedExamples[currentIn
   */
   .example-grid {
     display: grid;
-    grid-template-columns: 450px 510px; /* Docs(Right) Code(Left) */
+    grid-template-columns: 520px 580px; /* Docs(Right) Code(Left) - Scaled up */
     margin-top: 15px;
     margin-bottom: 20px;
     gap: 0; /* Continuous column look */
@@ -155,7 +155,7 @@ const next = currentIndex < sortedExamples.length - 1 ? sortedExamples[currentIn
   }
 
   /* Handle mobile responsiveness lightly */
-  @media (max-width: 960px) {
+  @media (max-width: 1100px) {
     .example {
         width: 100%;
         padding: 20px;
