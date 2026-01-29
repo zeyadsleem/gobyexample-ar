@@ -84,6 +84,8 @@ const next = currentIndex < sortedExamples.length - 1 ? sortedExamples[currentIn
     text-align: right;
     margin: 0;
     background-color: #1f1f1f;
+    border-left: 1px solid #333; /* Vertical separator */
+    border-bottom: 1px solid #333; /* Horizontal separator */
   }
 
   /* Code blocks */
@@ -98,6 +100,7 @@ const next = currentIndex < sortedExamples.length - 1 ? sortedExamples[currentIn
     border-radius: 0;
     height: 100%; /* Stretch to fill cell for continuous background */
     border: none;
+    border-bottom: 1px solid #333; /* Horizontal separator */
     display: flex;
     align-items: center; /* Better vertical alignment if one side is longer */
   }
